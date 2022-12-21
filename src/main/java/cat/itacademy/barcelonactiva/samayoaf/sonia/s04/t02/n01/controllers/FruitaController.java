@@ -31,7 +31,7 @@ public class FruitaController {
 	}
 	
 	@PutMapping("/update")
-	public Fruita updateFruita(@RequestBody Fruita fruita) {
+	public String updateFruita(@RequestBody Fruita fruita) {
 		return fruitaService.updateFruita(fruita);
 		
 	}

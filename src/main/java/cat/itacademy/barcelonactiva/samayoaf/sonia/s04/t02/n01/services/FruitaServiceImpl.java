@@ -24,18 +24,20 @@ public class FruitaServiceImpl implements FruitaService {
 	}
 
 	@Override
-	public Fruita updateFruita(Fruita fruita) {
-		Fruita fr=null;
-		Optional<Fruita> optionalFruita = fruitaRepo.findById((int) fruita.getId());
-		if(optionalFruita.isPresent()) {
-			fr=optionalFruita.get();
-			fr.setNom(fruita.getNom());
-			fr.setQuilos(fruita.getQuilos());
+	public String updateFruita(Fruita fruitaUpdate) {
+		
+		int num = (int) fruitaUpdate.getId();
+		
+		if(fruitaRepo.findById(num).isPresent()) {
+			Fruita fr = new Fruita();
+			fr=fruitaRepo.findById(num).get();
+			fr.setNom(fruitaUpdate.getNom());
+			fr.setQuilos(fruitaUpdate.getQuilos());
 			fruitaRepo.save(fr);
+			return "Fruita modificada";
 		}else {
-			return new Fruita();
+		return "Error al modificar fruita";
 		}
-		return fr;
 	}
 
 	@Override
@@ -52,7 +54,7 @@ public class FruitaServiceImpl implements FruitaService {
 
 	@Override
 	public List<Fruita> getAllFruita() {
-		// TODO Auto-generated method stub
+		
 		return fruitaRepo.findAll();
 	}
 

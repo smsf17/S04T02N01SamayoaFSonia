@@ -17,7 +17,7 @@ public interface FruitaService {
 	http://localhost:8080/fruita/getAll*/
 	public Fruita addFruita(Fruita fruita);
 	
-	public Fruita updateFruita(Fruita fruita);
+	public String updateFruita(Fruita fruitaUpdate);
 	
 	public String deleteFruita(int id);
 	
